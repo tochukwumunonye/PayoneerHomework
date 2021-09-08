@@ -26,6 +26,7 @@ Minimum API level is set to 22, so the presented approach is suitable for over 9
   
     * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android/) - dependency injection
     * [Retrofit](https://square.github.io/retrofit/) - networking
+    * [Testing](https://developer.android.com/training/testing/set-up-project) - Unit and Instrumented test
     * [Jetpack](https://developer.android.com/jetpack)
         * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - deal with whole in-app navigation
         * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - notify views about database change
