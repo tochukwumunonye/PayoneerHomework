@@ -3,6 +3,11 @@
 PayoneerHomeWork is an Android application that uses an retrofit to fetch data from a web through an API and displays the data as a list.
 
 
+![Screenshot_20210908-145256](https://user-images.githubusercontent.com/61085272/132524972-d0708872-6e3f-4c5d-ac16-1dc4bbd3b063.png)
+![Screenshot_20210908-145313](https://user-images.githubusercontent.com/61085272/132524982-90d9c046-cc8e-44b1-a489-2b688c2a8e37.png)
+![Screenshot_20210908-145401](https://user-images.githubusercontent.com/61085272/132525002-d6575e14-61dd-4cdb-8031-f8cd0ef8bd02.png)
+
+
 
 ## Project Characteristics
 
