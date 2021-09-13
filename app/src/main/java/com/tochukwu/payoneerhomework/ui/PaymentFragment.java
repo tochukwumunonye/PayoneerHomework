@@ -1,5 +1,7 @@
 package com.tochukwu.payoneerhomework.ui;
 
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,27 +9,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.tochukwu.payoneerhomework.PayoneerViewModel;
 import com.tochukwu.payoneerhomework.R;
 import com.tochukwu.payoneerhomework.adapter.PaymentAdapter;
 import com.tochukwu.payoneerhomework.data.Model;
 import com.tochukwu.payoneerhomework.data.Remote.APIWrapper;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import retrofit2.Response;
 
 @AndroidEntryPoint
 public class PaymentFragment extends Fragment {
@@ -38,13 +38,15 @@ public class PaymentFragment extends Fragment {
     TextView tvError;
     ProgressBar pb;
 
-
-    @Inject
+    //@Inject
     PayoneerViewModel payoneerViewModel;
 
     public PaymentFragment() {
-       // super(R.layout.payment_fragment);
     }
+
+    /*public PaymentFragment() {
+       // super(R.layout.payment_fragment);
+    }*/
 
     @Nullable
     @Override
@@ -61,9 +63,11 @@ public class PaymentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        payoneerViewModel = new ViewModelProvider(this).get(PayoneerViewModel.class);
         subscribeToObservers();
 
         btnError.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 retryAgain();
@@ -74,6 +78,7 @@ public class PaymentFragment extends Fragment {
     }
 
     private void subscribeToObservers() {
+        pb.setVisibility(View.VISIBLE);
         payoneerViewModel.getRemoteData().observe(getViewLifecycleOwner(), new Observer<APIWrapper<Model>>() {
             @Override
             public void onChanged(APIWrapper<Model> model) {
@@ -86,7 +91,8 @@ public class PaymentFragment extends Fragment {
                             break;
                         case FAILURE: // handle failure
                             retryfunction();
-                            Snackbar.make(requireActivity().findViewById(R.id.rootLayout), model.getStatus().toString(), Snackbar.LENGTH_LONG ).show();
+                            Toast.makeText(getActivity(),model.getStatus().toString(), Toast.LENGTH_LONG).show();
+                          //  Snackbar.make(requireActivity().findViewById(R.id.rootLayout), model.getStatus().toString(), Snackbar.LENGTH_LONG ).show();
                             break;
                     }
                 } else {

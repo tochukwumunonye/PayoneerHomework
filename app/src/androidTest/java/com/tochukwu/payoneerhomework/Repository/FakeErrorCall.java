@@ -1,10 +1,6 @@
-package com.tochukwu.payoneerhomework.data.repository;
+package com.tochukwu.payoneerhomework.Repository;
 
-import com.google.gson.Gson;
 import com.tochukwu.payoneerhomework.data.Model;
-import com.tochukwu.payoneerhomework.other.Constant;
-
-import org.mockito.Mockito;
 
 import java.io.IOException;
 
@@ -14,9 +10,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FakeCall implements Call<Model> {
-
-
+public class FakeErrorCall implements Call<Model> {
     @Override
     public Response<Model> execute() throws IOException {
         return null;
@@ -24,8 +18,7 @@ public class FakeCall implements Call<Model> {
 
     @Override
     public void enqueue(Callback<Model> callback) {
-        String json = Constant.constantJson;
-        callback.onResponse(this, Response.success(new Gson().fromJson(json, Model.class)));
+        callback.onFailure(this, new Exception("IOException"));
 
     }
 

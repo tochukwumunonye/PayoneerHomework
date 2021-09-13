@@ -19,6 +19,7 @@ public class FakeErrorCall implements Call<Model> {
     @Override
     public void enqueue(Callback<Model> callback) {
         callback.onFailure(this, new Exception("IOException"));
+
     }
 
     @Override

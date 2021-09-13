@@ -1,4 +1,4 @@
-package com.tochukwu.payoneerhomework;
+package com.tochukwu.payoneerhomework.ui;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
+@HiltViewModel
 public class PayoneerViewModel extends ViewModel {
 
     private PayoneerRepository payoneerRepository;
@@ -23,6 +23,7 @@ public class PayoneerViewModel extends ViewModel {
     @Inject
     public PayoneerViewModel(PayoneerRepository payoneerRepository) {
         this.payoneerRepository = payoneerRepository;
+
     }
 
     private final MutableLiveData<APIWrapper<Model>> remoteData = new MutableLiveData<>(null);

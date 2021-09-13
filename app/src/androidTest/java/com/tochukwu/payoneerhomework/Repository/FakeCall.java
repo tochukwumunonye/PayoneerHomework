@@ -1,10 +1,8 @@
-package com.tochukwu.payoneerhomework.data.repository;
+package com.tochukwu.payoneerhomework.Repository;
 
 import com.google.gson.Gson;
 import com.tochukwu.payoneerhomework.data.Model;
 import com.tochukwu.payoneerhomework.other.Constant;
-
-import org.mockito.Mockito;
 
 import java.io.IOException;
 
@@ -24,7 +22,7 @@ public class FakeCall implements Call<Model> {
 
     @Override
     public void enqueue(Callback<Model> callback) {
-        String json = Constant.constantJson;
+        String json = Constant.constantsJson;
         callback.onResponse(this, Response.success(new Gson().fromJson(json, Model.class)));
 
     }

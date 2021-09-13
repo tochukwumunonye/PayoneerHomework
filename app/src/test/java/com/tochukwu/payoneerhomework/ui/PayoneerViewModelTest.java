@@ -1,11 +1,10 @@
-package com.tochukwu.payoneerhomework;
-
-import static org.junit.Assert.*;
+package com.tochukwu.payoneerhomework.ui;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
 import com.tochukwu.payoneerhomework.data.Remote.APIWrapper;
 import com.tochukwu.payoneerhomework.data.repository.FakeRepository;
+import com.tochukwu.payoneerhomework.ui.PayoneerViewModel;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,11 +24,6 @@ public class PayoneerViewModelTest {
         /*FakeRepository fakeRepository =  new FakeRepository();
         fakeRepository.errorNetwork = true;
         payoneerViewModel = new PayoneerViewModel(fakeRepository);*/
-    }
-
-    @Test
-    public void getDataAndPutInLiveData(){
-        //Assert.assertEquals(payoneerViewModel.getRemoteData().getValue().getStatus(), APIWrapper.Status.FAILURE);
     }
 
     @Test
